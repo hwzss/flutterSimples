@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 /// 首页
 class HomeVc extends StatefulWidget {
 
+  String title;
+
+  HomeVc({Key key,  this.title}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _HomeVcState();
 }
@@ -12,8 +16,8 @@ class _HomeVcState extends State<HomeVc> {
 
   @override
   Widget build(BuildContext context) {
-    throw Scaffold(
-      appBar: AppBar(title: Text("白噢题"), backgroundColor: Colors.green,),
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title), backgroundColor: Colors.green,),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

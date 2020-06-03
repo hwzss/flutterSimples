@@ -19,7 +19,7 @@ class _RootVcState extends State<RootVc> {
   @override
   void initState() {
     super.initState();
-    _vcs = List()..add(HomeVc())..add(HomeVc())..add(HomeVc());
+    _vcs = List()..add(HomeVc(title: "首页"))..add(HomeVc(title: "资讯",))..add(HomeVc(title: "收藏",));
   }
 
   @override
