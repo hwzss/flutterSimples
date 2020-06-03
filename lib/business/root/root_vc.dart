@@ -21,8 +21,8 @@ class _RootVcState extends State<RootVc> {
     super.initState();
     _vcs = List()
       ..add(HomeVc(title: "首页"))
-      ..add(HomeVc(title: "收藏",))
-      ..add(CollectionVc("资讯",));
+      ..add(HomeVc(title: "资讯"))
+      ..add(CollectionVc("收藏"));
   }
 
   @override
