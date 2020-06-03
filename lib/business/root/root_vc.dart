@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/business/home/business_home_vc.dart';
+
 
 class RootVc extends StatefulWidget {
 
@@ -11,7 +13,14 @@ class RootVc extends StatefulWidget {
 
 class _RootVcState extends State<RootVc> {
 
+  List<Widget> _vcs;
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _vcs = List()..add(HomeVc())..add(HomeVc())..add(HomeVc());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +33,7 @@ class _RootVcState extends State<RootVc> {
       currentIndex: _selectedIndex,
       onTap: onItemTap,);
 
-    return Scaffold(bottomNavigationBar: bottomNavBar,);
+    return Scaffold(bottomNavigationBar: bottomNavBar, body: _vcs[_selectedIndex],);
   }
 
 
