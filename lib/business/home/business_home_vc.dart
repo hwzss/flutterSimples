@@ -2,14 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// 首页
+
 class HomeVc extends StatefulWidget {
 
-  String title;
+  final String title;
 
   HomeVc({Key key,  this.title}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _HomeVcState();
+
 }
 
 class _HomeVcState extends State<HomeVc> {
