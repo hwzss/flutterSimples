@@ -26,18 +26,13 @@ class _CollectionVcState extends State<CollectionVc> {
   }
 
   Widget _listView() {
-    return ListView(
+    return ListView.builder(
       itemExtent: 146,
+      itemCount: 22,
       padding: EdgeInsets.fromLTRB(20, 4, 20, 24),
-      children: <Widget>[
-        _collectionCell(),
-        _collectionCell(),
-        _collectionCell(),
-        _collectionCell(),
-        _collectionCell(),
-        _collectionCell(),
-        _collectionCell(),
-      ],
+      itemBuilder: (BuildContext context, int index) {
+        return _collectionCell();
+      },
     );
   }
 
