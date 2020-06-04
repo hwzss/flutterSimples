@@ -15,7 +15,6 @@ class CollectionVc extends BasicVc {
 }
 
 class _CollectionVcState extends State<CollectionVc> {
-//  https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg
 
   @override
   Widget build(BuildContext context) {
@@ -67,19 +66,21 @@ class _CollectionVcState extends State<CollectionVc> {
 
   /// 菜谱文字描述区域
   Widget _textColumn() {
+
+    Text titleText = Text('美味营养成功率高的一道美食减脂餐',
+      style: TextStyle(color: Color(0xFF1E192F), fontSize: 16, fontWeight: FontWeight.w500),
+    );
+
+    Text bottomText = Text('点赞293   收藏321',
+      style: TextStyle(color: Color(0xFF84838B), fontSize: 12, fontWeight: FontWeight.normal),);
+
     return Expanded(
       child:  Padding(
         padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text('美味营养成功率高的一道美食减脂餐',
-              style: TextStyle(color: Color(0xFF1E192F), fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            const Text('点赞293   收藏321',
-              style: TextStyle(color: Color(0xFF84838B), fontSize: 12, fontWeight: FontWeight.normal),),
-          ],
+          children: <Widget>[titleText, bottomText],
         ),
       ),
     );
