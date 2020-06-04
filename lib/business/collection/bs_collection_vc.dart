@@ -15,6 +15,7 @@ class CollectionVc extends BasicVc {
 }
 
 class _CollectionVcState extends State<CollectionVc> {
+//  https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class _CollectionVcState extends State<CollectionVc> {
   Widget _listView() {
     return ListView(
       itemExtent: 146,
+      padding: EdgeInsets.fromLTRB(20, 4, 20, 24),
       children: <Widget>[
         _collectionCell(),
         _collectionCell(),
@@ -39,33 +41,52 @@ class _CollectionVcState extends State<CollectionVc> {
     );
   }
 
-
+  /// cell 初始化 subviews
   Widget _collectionCell() {
-      return ConstrainedBox(
-        constraints: BoxConstraints(
-            minWidth: double.infinity, //宽度尽可能大
-            minHeight: 50.0 //最小高度为50像素
-        ),
-        child: Container(
-            height: 5.0,
+      return Container(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
             child: Row(
               children: <Widget>[
-                AspectRatio(
-                    aspectRatio: 3/2,
-                    child: FadeInImage.assetNetwork(
-                      placeholder: "",
-                      image: "https://app.huyayue.com/bible/images/001feda77bfea9aacb47df8c26fb7314.jpg",
-                      fit: BoxFit.cover,)
-                ),
-                Column(
-                  children: <Widget>[
-                    const Text('I\'m dedicating u'),
-                    const Text('I\'m dedicating '),
-                  ],
-                ),
+                _image(),
+                _textColumn(),
               ],
-            )
-        ),
+            ),
+          )
       );
+  }
+
+  /// 菜谱图片
+  Widget _image() {
+    return AspectRatio(
+        aspectRatio: 1,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: FadeInImage.assetNetwork(
+            placeholder: "",
+            image: "https://app.huyayue.com/bible/images/001feda77bfea9aacb47df8c26fb7314.jpg",
+            fit: BoxFit.cover,),
+        )
+    );
+  }
+
+  /// 菜谱文字描述区域
+  Widget _textColumn() {
+    return Expanded(
+      child:  Padding(
+        padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text('美味营养成功率高的一道美食减脂餐',
+              style: TextStyle(color: Color(0xFF1E192F), fontSize: 16, fontWeight: FontWeight.w500),
+            ),
+            const Text('点赞293 收藏321',
+              style: TextStyle(color: Color(0xFF84838B), fontSize: 12, fontWeight: FontWeight.normal),),
+          ],
+        ),
+      ),
+    );
   }
 }
