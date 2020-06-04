@@ -77,7 +77,7 @@ class _CollectionVcState extends State<CollectionVc> {
             Text('美味营养成功率高的一道美食减脂餐',
               style: TextStyle(color: Color(0xFF1E192F), fontSize: 16, fontWeight: FontWeight.w500),
             ),
-            const Text('点赞293 收藏321',
+            const Text('点赞293   收藏321',
               style: TextStyle(color: Color(0xFF84838B), fontSize: 12, fontWeight: FontWeight.normal),),
           ],
         ),
