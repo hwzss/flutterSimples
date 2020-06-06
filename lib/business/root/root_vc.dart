@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/business/collection/bs_collection_vc.dart';
-import 'package:flutterapp/business/home/business_home_vc.dart';
+import 'package:flutterapp/business/home/bs_home_vc.dart';
 import 'package:flutterapp/business/news/bs_news_vc.dart';
 
 

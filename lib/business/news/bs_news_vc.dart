@@ -20,54 +20,62 @@ class _NewsVcState extends State<NewsVc> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text(widget.title), backgroundColor: Colors.green,),
-        body: Column(
+        body: Stack(
+          fit: StackFit.expand,
           children: <Widget>[
-
-            SizedBox(
-              width: 415,
-              height: 300,
-              child: _btnGridView(),
+            Positioned(
+              left: 0,
+              right: 0,
+              top: 0,
+              child: SizedBox(
+                height: 110,
+                width: 400,
+                child:FadeInImage.assetNetwork(
+                    placeholder: "",
+                    fit: BoxFit.cover,
+                    image: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg"
+                ),
+              ),
             ),
-            SizedBox(
-              width: 415,
-              height: 300,
-              child: _listView(),
-            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 110, 0, 0),
+              child:  CustomScrollView(
+                slivers: <Widget>[
+                  _btnGridView(),
+                  _listView()
+                ],
+              ),
+            )
           ],
         )
     );
   }
 
   Widget _btnGridView() {
-    return GridView(
+    return SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           childAspectRatio: 1
         ),
 
-        children: <Widget>[
-          _image(),
-          _image(),
-          _image(),
-          _image(),
-          _image(),
-          _image(),
-          _image(),
-          _image(),
-        ],
+        delegate: SliverChildBuilderDelegate((BuildContext context, int index){
+          return _image();
+        }, childCount: 3),
     );
   }
 
 
   /// 列表
   Widget _listView() {
-    return ListView.builder(
-        itemCount: 22,
-        itemExtent: 300,
-        padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-        itemBuilder: (BuildContext context, int index) {
-          return _cell();
-        });
+    return SliverPadding(
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+        sliver: SliverFixedExtentList(
+          itemExtent: 300,
+          delegate: new SliverChildBuilderDelegate((BuildContext context, int index) {
+            return _cell();
+          }, childCount: 22)
+      )
+    );
   }
 
   Widget _cell() {
