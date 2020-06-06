@@ -20,10 +20,46 @@ class _NewsVcState extends State<NewsVc> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text(widget.title), backgroundColor: Colors.green,),
-        body: _listView()
+        body: Column(
+          children: <Widget>[
+
+            SizedBox(
+              width: 415,
+              height: 300,
+              child: _btnGridView(),
+            ),
+            SizedBox(
+              width: 415,
+              height: 300,
+              child: _listView(),
+            ),
+          ],
+        )
     );
   }
 
+  Widget _btnGridView() {
+    return GridView(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 1
+        ),
+
+        children: <Widget>[
+          _image(),
+          _image(),
+          _image(),
+          _image(),
+          _image(),
+          _image(),
+          _image(),
+          _image(),
+        ],
+    );
+  }
+
+
+  /// 列表
   Widget _listView() {
     return ListView.builder(
         itemCount: 22,
