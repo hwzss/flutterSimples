@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// 首页
-
 class NewsVc extends StatefulWidget {
 
   final String title;
@@ -30,28 +29,23 @@ class _NewsVcState extends State<NewsVc> {
       itemBuilder: (BuildContext context, int index) {
         return (index % 2 == 0 ? SizedBox(height: 300, child:_cell()):SizedBox(height: 200, child:_threePicCell()));
       },
-//      itemExtent: 300,
+      // itemExtent: 300,
       itemCount: 22,
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
     );
   }
 
+  /// 三图 cell
   Widget _threePicCell() {
     return Column(
       children: <Widget>[
-        Text("杭州天香楼的东坡肉、楼外楼的西湖醋鱼名扬中外。在这些杭帮老字号里",
-        style: TextStyle(color: Color(0xFF1E192F), fontSize: 16),),
+        Text("杭州天香楼的东坡肉、楼外楼的西湖醋鱼名扬中外。在这些杭帮老字号里", style: TextStyle(color: Color(0xFF1E192F), fontSize: 16),),
         Padding(
           padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
           child: SizedBox(
-            height: 130,
-            child: GridView(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 0,
-                  childAspectRatio: 1,
-              ),
+            height: 115,
+            child:  Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 _threePic(),
                 _threePic(),
@@ -65,9 +59,12 @@ class _NewsVcState extends State<NewsVc> {
   }
   
   Widget _threePic(){
-     return ClipRRect(
-       borderRadius: BorderRadius.circular(16),
-       child: _image(),
+     return AspectRatio(
+       aspectRatio: 1,
+       child: ClipRRect(
+         borderRadius: BorderRadius.circular(16),
+         child: _image(),
+       ),
      );
   }
 
