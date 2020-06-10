@@ -23,10 +23,19 @@ class _NewsVcState extends State<NewsVc> {
     );
   }
 
+    /*
+        TODO 方法写的过于集中在一个类中
+             复用性和可操作性不够
+             思考独立出去并用构造函数控制
+             下一次会说怎么做，可以先思考
+    */
+
   /// 列表
   Widget _listView() {
+    /// TODO 此页有下划线 应使用 ListView.separated
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {
+        /// TODO Cell 高度不可控时，是可以自适应高度的（这点我课上说错了）
         return (index % 2 == 0 ? SizedBox(height: 300, child:_cell()):SizedBox(height: 200, child:_threePicCell()));
       },
       // itemExtent: 300,
@@ -34,7 +43,12 @@ class _NewsVcState extends State<NewsVc> {
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
     );
   }
-
+    /*
+        TODO 图片的宽高未做好限制导致溢出屏幕
+             可思考使用 LayoutBuilder 获取父组件宽高计算
+             或 MediaQuery.of(context).size 获取
+             或 MediaQueryData.fromWindow(window).size 获取
+    */
   /// 三图 cell
   Widget _threePicCell() {
     return Column(
@@ -68,6 +82,7 @@ class _NewsVcState extends State<NewsVc> {
      );
   }
 
+  ///  TODO 一张图片的未完成
   Widget _cell() {
     return Padding(
       padding: EdgeInsets.fromLTRB(0, 4, 0, 20),

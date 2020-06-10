@@ -23,6 +23,12 @@ class _CollectionVcState extends State<CollectionVc> {
         body: _listView(),
     );
   }
+  /*
+        TODO 方法写的过于集中在一个类中
+             复用性和可操作性不够
+             思考独立出去并用构造函数控制
+             下一次会说怎么做，可以先思考
+    */
 
   Widget _listView() {
     return ListView.builder(

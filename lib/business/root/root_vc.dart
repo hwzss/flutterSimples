@@ -28,6 +28,13 @@ class _RootVcState extends State<RootVc> {
 
   @override
   Widget build(BuildContext context) {
+    /*
+        TODO 使用这几个字段控制点击和未点击时的样式
+             selectedFontSize: 10,
+             unselectedFontSize: 10,
+             selectedItemColor: Color(0xFF00AD53),
+             unselectedItemColor: Color(0xFF84838B),
+    */
     BottomNavigationBar bottomNavBar = BottomNavigationBar(
       items: [
         BottomNavigationBarItem(title: Text("首页"), icon: Image.asset('icons/tab_home_def@1x.png'), activeIcon: Image.asset('icons/tab_home@1x.png')),

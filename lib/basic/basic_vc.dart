@@ -1,6 +1,11 @@
+/*
+    TODO cupertino 是 iOS 风格的一套组件
+         现在讲的都是 material 安卓风格里的
+         两个不需要一起引用
+         其它页面一样不需要一起引用
+*/
 
-
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BasicVc extends StatefulWidget {
