@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/business/home/bs_home_grid_btn.dart';
 import 'package:flutterapp/business/home/bs_search_vc.dart';
 
 /// 首页
@@ -106,21 +107,13 @@ class _HomeVcState extends State<HomeVc> {
 
   /// 顶部功能按钮
   Widget _topGridBtn() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        SizedBox(
-          width: 50, height: 50,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular((25)),
-            child: _image(),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(0, 6, 0, 0),
-          child: Text("夕阳", style: TextStyle(color: Color(0xFF84838B), fontSize: 12),),
-        )
-      ],
+    return GridBtn(
+      title: "夕阳",
+      imageSrc: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
+      onBtnClicked: (String title){
+        print(title);
+        onTapSearchView();
+      },
     );
   }
 
