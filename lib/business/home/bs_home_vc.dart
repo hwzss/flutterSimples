@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/business/home/bs_home_grid_btn.dart';
 import 'package:flutterapp/business/home/bs_search_vc.dart';
 
+import 'bs_search_bar.dart';
+
 /// 首页
 
 class HomeVc extends StatefulWidget {
@@ -58,12 +60,7 @@ class _HomeVcState extends State<HomeVc> {
     );
   }
 
-  /*
-        TODO 方法写的过于集中在一个类中
-             复用性和可操作性不够
-             思考独立出去并用构造函数控制
-             下一次会说怎么做，可以先思考
-    */
+
   /// 搜索栏
   Widget _searchBar() {
     return Padding(
@@ -71,19 +68,7 @@ class _HomeVcState extends State<HomeVc> {
       child: GestureDetector(
         child: ClipRRect(
           borderRadius: BorderRadius.circular(_searchBarH * 0.5),
-          child: Container(
-            decoration: BoxDecoration(color: Color(0xFFe7e7e7)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Image.asset("icons/tab_home_def@1x.png"),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                  child: Text("搜索菜谱/食材", style: TextStyle(color: Color(0xFFC2BFCF), fontSize: 16),),
-                )
-              ],
-            ),
-          ),
+          child: const HomeSearchBarView(placeholder: "搜索菜谱/食材", imageName: "icons/tab_home_def@1x.png",),
         ),
         onTap: onTapSearchView,
       ),
