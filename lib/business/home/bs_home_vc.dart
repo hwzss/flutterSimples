@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/business/home/bs_search_vc.dart';
 
 /// 首页
 
@@ -66,21 +67,24 @@ class _HomeVcState extends State<HomeVc> {
   Widget _searchBar() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, _searchBarTopPadding, 20, _searchBarBottomPadding),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(_searchBarH * 0.5),
-        child: Container(
-          decoration: BoxDecoration(color: Color(0xFFe7e7e7)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset("icons/tab_home_def@1x.png"),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                child: Text("搜索菜谱/食材", style: TextStyle(color: Color(0xFFC2BFCF), fontSize: 16),),
-              )
-            ],
+      child: GestureDetector(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(_searchBarH * 0.5),
+          child: Container(
+            decoration: BoxDecoration(color: Color(0xFFe7e7e7)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset("icons/tab_home_def@1x.png"),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                  child: Text("搜索菜谱/食材", style: TextStyle(color: Color(0xFFC2BFCF), fontSize: 16),),
+                )
+              ],
+            ),
           ),
         ),
+        onTap: onTapSearchView,
       ),
     );
   }
@@ -233,7 +237,10 @@ class _HomeVcState extends State<HomeVc> {
          fit: BoxFit.cover,
          image: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg"
      );
+  }
 
+  void onTapSearchView() {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => SearchVc()));
   }
 
 }
