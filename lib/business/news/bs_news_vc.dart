@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/business/news/Models/bs_news_model.dart';
+import 'package:flutterapp/business/news/Views/bs_news_single_pic_cell.dart';
+import 'package:flutterapp/business/news/Views/bs_news_three_pic_cell.dart';
 
 /// 首页
+// ignore: must_be_immutable
 class NewsVc extends StatefulWidget {
 
-  final String title;
+  String title;
+  List<JFCNewsModel> models = List();
 
   NewsVc({Key key,  this.title}) : super(key: key);
 
@@ -16,32 +21,71 @@ class NewsVc extends StatefulWidget {
 class _NewsVcState extends State<NewsVc> {
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text(widget.title), backgroundColor: Colors.green,),
-        body: _listView()
-    );
+  void initState() {
+    super.initState();
+    this._requestNews();
   }
 
-    /*
-        TODO 方法写的过于集中在一个类中
-             复用性和可操作性不够
-             思考独立出去并用构造函数控制
-             下一次会说怎么做，可以先思考
-    */
+  @override
+  Widget build(BuildContext context) {
+    return _listView();
+  }
 
   /// 列表
   Widget _listView() {
     /// TODO 此页有下划线 应使用 ListView.separated
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {
-        /// TODO Cell 高度不可控时，是可以自适应高度的（这点我课上说错了）
-        return (index % 2 == 0 ? SizedBox(height: 300, child:_cell()):SizedBox(height: 200, child:_threePicCell()));
+        JFCNewsModel model = widget.models[index];
+        if (model.imgSrcs.length == 1) {
+          return JFCNewsSinglePicCell(model: model,);
+        }else {
+          return JFCNewsThreePicCell(model: model,);
+        }
       },
       // itemExtent: 300,
-      itemCount: 22,
+      itemCount: widget.models.length,
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
     );
+  }
+
+
+  void _requestNews() {
+    for (int i = 0; i < 22; i++) {
+      var model;
+      int tag = i % 3;
+      switch (tag) {
+        case 0:
+          {
+            model = JFCNewsModel("杭州天香楼的东坡肉、楼外楼的西湖醋鱼名扬中外。在这些杭帮老字号里",
+                ["https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg"]
+            );
+          }
+          break;
+        case 1:
+          {
+            model = JFCNewsModel("楼外楼的西湖醋鱼名扬中外",
+                [
+                  "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
+                  "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
+                ]
+            );
+          }
+          break;
+        default:
+          {
+            model = JFCNewsModel("杭州天香楼的东坡肉、楼外楼的西湖醋鱼名扬中外。在这些杭帮老字号里",
+                [
+                  "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
+                  "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
+                  "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg"
+                ]
+            );
+          }
+          break;
+      }
+      widget.models.add(model);
+    }
   }
     /*
         TODO 图片的宽高未做好限制导致溢出屏幕
@@ -49,60 +93,5 @@ class _NewsVcState extends State<NewsVc> {
              或 MediaQuery.of(context).size 获取
              或 MediaQueryData.fromWindow(window).size 获取
     */
-  /// 三图 cell
-  Widget _threePicCell() {
-    return Column(
-      children: <Widget>[
-        Text("杭州天香楼的东坡肉、楼外楼的西湖醋鱼名扬中外。在这些杭帮老字号里", style: TextStyle(color: Color(0xFF1E192F), fontSize: 16),),
-        Padding(
-          padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
-          child: SizedBox(
-            height: 115,
-            child:  Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                _threePic(),
-                _threePic(),
-                _threePic(),
-              ],
-            ),
-          ),
-        )
-      ],
-    );
-  }
-  
-  Widget _threePic(){
-     return AspectRatio(
-       aspectRatio: 1,
-       child: ClipRRect(
-         borderRadius: BorderRadius.circular(16),
-         child: _image(),
-       ),
-     );
-  }
-
-  ///  TODO 一张图片的未完成
-  Widget _cell() {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(0, 4, 0, 20),
-      child: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          _image()
-        ],
-      ),
-    );
-  }
-
-
-  Widget _image() {
-    return FadeInImage.assetNetwork(
-        placeholder: "",
-        fit: BoxFit.cover,
-        image: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg"
-    );
-
-  }
 
 }

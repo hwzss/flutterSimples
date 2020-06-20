@@ -1,12 +1,38 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutterapp/business/home/Models/bs_home_cook_model.dart';
 
-class HomeCookCell extends StatefulWidget {
+class HomeCookCell extends StatelessWidget {
 
+  final HomeCookModel model;
+
+  const HomeCookCell({Key key, this.model}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
+  Widget build(BuildContext context) {
+    return _cell();
+  }
+
+  /// 大 cell
+  Widget _cell() {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, 4, 0, 20),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            _image(),
+            Positioned(
+                left: 0,
+                top: 0,
+                right: 0,
+                child: _cellTopArea()
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   /// 顶部区域
@@ -35,7 +61,7 @@ class HomeCookCell extends StatefulWidget {
   /// 主标题
   Widget _titleText() {
     return Text(
-      "碧水连天天连水, 春风扬柳柳扬风",
+      this.model.title,
       style: TextStyle(
         fontSize: 22,
         color: Color(0xFFFFFFFF),
@@ -59,13 +85,13 @@ class HomeCookCell extends StatefulWidget {
               child: FadeInImage.assetNetwork(
                   placeholder: "",
                   fit: BoxFit.cover,
-                  image: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg"
+                  image: this.model.imageScr
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-            child: Text("哈哈哈😂",
+            child: Text(this.model.uNickName,
               style: TextStyle(fontSize: 12, color: Color(0xFFFFFFFF)),
             ),
           )
@@ -79,8 +105,9 @@ class HomeCookCell extends StatefulWidget {
     return FadeInImage.assetNetwork(
         placeholder: "",
         fit: BoxFit.cover,
-        image: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg"
+        image: this.model.uImageSrc
     );
   }
+
 
 }
