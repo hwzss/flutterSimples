@@ -10,10 +10,7 @@ class JFCNewsHomeTabVc extends StatefulWidget {
 
   List<Widget> titleTabs = [
     Tab(
-      text: '江湖',
-    ),
-    Tab(
-      text: '小小滴人呀',
+      text: '江湖里',
     ),
     Tab(
       text: '小小滴人呀',
@@ -31,7 +28,7 @@ class JFCNewsHomeTabVc extends StatefulWidget {
       text: '江湖',
     ),
     Tab(
-      text: '飘啊飘',
+      text: '飘',
     ),
   ];
 
