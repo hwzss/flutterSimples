@@ -43,7 +43,6 @@ class _NewsVcState extends State<NewsVc> {
           return JFCNewsThreePicCell(model: model,);
         }
       },
-      // itemExtent: 300,
       itemCount: widget.models.length,
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
     );
@@ -87,11 +86,5 @@ class _NewsVcState extends State<NewsVc> {
       widget.models.add(model);
     }
   }
-    /*
-        TODO 图片的宽高未做好限制导致溢出屏幕
-             可思考使用 LayoutBuilder 获取父组件宽高计算
-             或 MediaQuery.of(context).size 获取
-             或 MediaQueryData.fromWindow(window).size 获取
-    */
 
 }
