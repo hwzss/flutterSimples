@@ -8,7 +8,8 @@ import 'Views/bs_search_bar.dart';
 import 'Views/home_cook_cell/bs_home_cook_cell.dart';
 
 /// 首页
-
+/// TODO 继续补充首页逻辑功能
+/// TODO 继续完成详情页 UI
 class HomeVc extends StatefulWidget {
 
   String title;
