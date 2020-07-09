@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/business/common/http/http_helper.dart';
 import 'package:flutterapp/business/home/Models/bs_home_cook_model.dart';
 import 'package:flutterapp/business/home/Views/bs_home_grid_btn.dart';
 import 'package:flutterapp/business/home/SubModules/bs_search_vc.dart';
@@ -34,6 +35,7 @@ class _HomeVcState extends State<HomeVc> {
   @override
   void initState() {
     super.initState();
+    requestNetWorkData();
     for (int i = 0; i < 11; i++) {
       widget.models.add(
           HomeCookModel("碧水连天天连水, 春风扬柳柳扬风",
@@ -43,6 +45,11 @@ class _HomeVcState extends State<HomeVc> {
       );
     }
 
+  }
+
+  void requestNetWorkData () async {
+      BaseHttpResponse response = await httpRequest.getRequest(GetContentsBySubClassId, data: {"id":"257352874", "page":"1"});
+      print(response.toString());
   }
 
   @override
