@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/common/info_helper/info_helper.dart';
-//import 'package:flutterbabyfoodapp/resource/info_helper/info_helper.dart';
 import './api.dart';
 
 /************************ 图片 ID *************************/

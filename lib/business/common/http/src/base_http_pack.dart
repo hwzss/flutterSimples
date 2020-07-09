@@ -1,7 +1,6 @@
 import 'package:flutterapp/common/info_helper/info_helper.dart';
 
 import './api.dart';
-//import 'package:flutterbabyfoodapp/resource/info_helper/info_helper.dart';
 
 /// 包装 http
 String packHttpRequestURL(String url) {
