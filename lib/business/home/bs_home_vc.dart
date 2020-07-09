@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/business/common/http/http_helper.dart';
@@ -50,6 +52,15 @@ class _HomeVcState extends State<HomeVc> {
   void requestNetWorkData () async {
       BaseHttpResponse response = await httpRequest.getRequest(GetContentsBySubClassId, data: {"id":"257352874", "page":"1"});
       print(response.toString());
+      List res = response.responseData;
+      for (var value in res) {
+        HashMap map = value;
+        String imageid = map["imageid"];
+        String description = map["description"];
+        String authorname = map["authorname"];
+
+        print(value);
+      }
   }
 
   @override
