@@ -54,12 +54,17 @@ class _HomeVcState extends State<HomeVc> {
       print(response.toString());
       List res = response.responseData;
       for (var value in res) {
-        HashMap map = value;
+        Map map = value;
         String imageid = map["imageid"];
         String description = map["description"];
         String authorname = map["authorname"];
 
-        print(value);
+        widget.models.add(
+            HomeCookModel(description,
+                imageScr: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
+                uImageSrc: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
+                uNickName: authorname)
+        );
       }
   }
 
