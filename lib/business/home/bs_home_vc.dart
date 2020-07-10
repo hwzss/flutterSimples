@@ -11,7 +11,6 @@ import 'Views/bs_search_bar.dart';
 import 'Views/home_cook_cell/bs_home_cook_cell.dart';
 
 /// 首页
-/// TODO 继续补充首页逻辑功能
 /// TODO 继续完成详情页 UI
 class HomeVc extends StatefulWidget {
 
@@ -38,40 +37,18 @@ class _HomeVcState extends State<HomeVc> {
   void initState() {
     super.initState();
     requestNetWorkData();
-//    for (int i = 0; i < 11; i++) {
-//      widget.models.add(
-//          HomeCookModel("碧水连天天连水, 春风扬柳柳扬风",
-//          imageScr: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
-//          uImageSrc: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
-//          uNickName: "哈哈哈😂")
-//      );
-//    }
-
   }
 
+  /// 请求网络菜谱数据
   void requestNetWorkData () async {
       BaseHttpResponse response = await httpRequest.getRequest(GetContentsBySubClassId, data: {"id":"257352874", "page":"1"});
       print(response.toString());
       List res = response.responseData;
       for (var value in res) {
         Map map = value;
-        String imageid = map["imageid"];
-        String description = map["description"];
-        String authorname = map["authorname"];
-        String authorimageid = map["authorimageid"];
-
-        var imagUrl =  getNetImagePath(imageid);
-        var uimageUrl =  getNetImagePath(authorimageid);
-        widget.models.add(
-            HomeCookModel(description,
-                imageScr: imagUrl,
-                uImageSrc: uimageUrl,
-                uNickName: authorname)
-        );
+        widget.models.add(HomeCookModel.formJson(map));
       }
-      setState(() {
-
-      });
+      setState(() {});
   }
 
   @override
