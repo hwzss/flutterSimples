@@ -45,8 +45,7 @@ class _HomeVcState extends State<HomeVc> {
       print(response.toString());
       List res = response.responseData;
       for (var value in res) {
-        Map map = value;
-        widget.models.add(HomeCookModel.formJson(map));
+        widget.models.add(HomeCookModel.formJson(value));
       }
       setState(() {});
   }
