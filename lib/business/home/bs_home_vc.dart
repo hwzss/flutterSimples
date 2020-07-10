@@ -7,6 +7,7 @@ import 'package:flutterapp/business/home/Models/bs_home_cook_model.dart';
 import 'package:flutterapp/business/home/Views/bs_home_grid_btn.dart';
 import 'package:flutterapp/business/home/SubModules/bs_search_vc.dart';
 
+import 'SubModules/bs_home_cook_detail_vc.dart';
 import 'Views/bs_search_bar.dart';
 import 'Views/home_cook_cell/bs_home_cook_cell.dart';
 
@@ -130,7 +131,12 @@ class _HomeVcState extends State<HomeVc> {
       return SliverPadding(
         padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
         sliver: SliverFixedExtentList(
-          delegate: SliverChildBuilderDelegate((BuildContext context, int index) => HomeCookCell(model: widget.models[index],),
+          delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+            return GestureDetector(
+              child: HomeCookCell(model: widget.models[index]),
+              onTap: () => onTapCellAtIndex(index),
+            );
+          },
               childCount: widget.models.length
           ),
           itemExtent: 300,
@@ -138,6 +144,11 @@ class _HomeVcState extends State<HomeVc> {
       );
 
   }
+
+  void onTapCellAtIndex(int index) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => LTCookRecipeDetailVc()));
+  }
+
 
   void onTapSearchView() {
       Navigator.push(context, MaterialPageRoute(builder: (context) => SearchVc()));
