@@ -85,7 +85,7 @@ class HomeCookCell extends StatelessWidget {
               child: FadeInImage.assetNetwork(
                   placeholder: "",
                   fit: BoxFit.cover,
-                  image: this.model.imageScr
+                  image: this.model.uImageSrc
               ),
             ),
           ),
@@ -105,7 +105,7 @@ class HomeCookCell extends StatelessWidget {
     return FadeInImage.assetNetwork(
         placeholder: "",
         fit: BoxFit.cover,
-        image: this.model.uImageSrc
+        image: this.model.imageScr
     );
   }
 

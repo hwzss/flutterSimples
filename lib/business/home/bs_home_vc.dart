@@ -38,14 +38,14 @@ class _HomeVcState extends State<HomeVc> {
   void initState() {
     super.initState();
     requestNetWorkData();
-    for (int i = 0; i < 11; i++) {
-      widget.models.add(
-          HomeCookModel("碧水连天天连水, 春风扬柳柳扬风",
-          imageScr: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
-          uImageSrc: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
-          uNickName: "哈哈哈😂")
-      );
-    }
+//    for (int i = 0; i < 11; i++) {
+//      widget.models.add(
+//          HomeCookModel("碧水连天天连水, 春风扬柳柳扬风",
+//          imageScr: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
+//          uImageSrc: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
+//          uNickName: "哈哈哈😂")
+//      );
+//    }
 
   }
 
@@ -58,14 +58,20 @@ class _HomeVcState extends State<HomeVc> {
         String imageid = map["imageid"];
         String description = map["description"];
         String authorname = map["authorname"];
+        String authorimageid = map["authorimageid"];
 
+        var imagUrl =  getNetImagePath(imageid);
+        var uimageUrl =  getNetImagePath(authorimageid);
         widget.models.add(
             HomeCookModel(description,
-                imageScr: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
-                uImageSrc: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1155094793,592129984&fm=26&gp=0.jpg",
+                imageScr: imagUrl,
+                uImageSrc: uimageUrl,
                 uNickName: authorname)
         );
       }
+      setState(() {
+
+      });
   }
 
   @override
