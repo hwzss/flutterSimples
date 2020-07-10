@@ -133,15 +133,27 @@ class _LTCookRecipeDetailVcState extends State<LTCookRecipeDetailVc> {
 
   /// 材料背景
   Widget materialsBackgroudWidget() {
-      return Container(
-        decoration: BoxDecoration(color: Color(0xFFF5F5F7)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text("需要材料", style: TextStyle(color: Color(0xFF1E192F), fontSize: 18),),
-            materialsWidgetColumn()
-          ],
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(0, 16, 0, 30),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(6),
+          child: Container(
+            decoration: BoxDecoration(color: Color(0xFFF5F5F7)),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                    child: Text("需要材料", style: TextStyle(color: Color(0xFF1E192F), fontSize: 18, fontWeight: FontWeight.bold),),
+                  ),
+                  materialsWidgetColumn()
+                ],
+              ),
+            ),
+          ),
         ),
       );
   }
@@ -159,10 +171,13 @@ class _LTCookRecipeDetailVcState extends State<LTCookRecipeDetailVc> {
   }
 
   Widget materialsWidget(String title, String subTitle) {
-    return Row(
-      children: <Widget>[
-      Text(title, style: TextStyle(color: Color(0xFF84838B), fontSize: 18),),
-      ],
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
+      child: Row(
+        children: <Widget>[
+        Text(title, style: TextStyle(color: Color(0xFF84838B), fontSize: 18),),
+        ],
+      ),
     );
   }
 
@@ -198,13 +213,22 @@ class _LTCookRecipeDetailVcState extends State<LTCookRecipeDetailVc> {
         Text("1/3", style: TextStyle(color: Color(0xff84838B), fontSize: 16),),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 12, 0, 12),
-          child: FadeInImage.assetNetwork(
-              placeholder: "",
-              fit: BoxFit.cover,
-              image: widget.model.uImageSrc
-          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(6.0),
+            child: AspectRatio(
+              aspectRatio: 16/9.0,
+              child: FadeInImage.assetNetwork(
+                  placeholder: "",
+                  fit: BoxFit.cover,
+                  image: widget.model.uImageSrc
+              ),
+            ),
+          )
         ),
-        Text("鲫鱼收拾干净 表面划几刀易于入味"),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+          child: Text("鲫鱼收拾干净 表面划几刀易于入味"),
+        ),
       ],
     );
   }
