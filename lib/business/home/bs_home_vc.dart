@@ -146,7 +146,7 @@ class _HomeVcState extends State<HomeVc> {
   }
 
   void onTapCellAtIndex(int index) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => LTCookRecipeDetailVc()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => LTCookRecipeDetailVc(model: widget.models[index])));
   }
 
 
