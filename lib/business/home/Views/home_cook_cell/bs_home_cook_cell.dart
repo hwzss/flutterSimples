@@ -91,7 +91,7 @@ class HomeCookCell extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-            child: Text(this.model.uNickName,
+            child: Text(this.model.uNickName, 
               style: TextStyle(fontSize: 12, color: Color(0xFFFFFFFF)),
             ),
           )
